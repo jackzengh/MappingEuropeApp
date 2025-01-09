@@ -21,6 +21,18 @@ struct LocationsView: View {
                 header
                 
                 Spacer()
+                
+                ZStack {
+                    // ??? Do not understand why this needs to be in a ForEach loop 
+                    ForEach(vm.locations) { location in
+                        // ??? unsure of the purpose of this if statement
+                        if vm.mapLocation == location {
+                            LocationPreviewView(location: location)
+                                .shadow(color: Color.black.opacity(0.3), radius: 20, x: 0, y: 0)
+                                .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+                        }
+                    }
+                }
             }
             
             
