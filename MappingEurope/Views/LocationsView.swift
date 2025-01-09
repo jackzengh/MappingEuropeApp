@@ -43,6 +43,7 @@ extension LocationsView {
                 .font(.headline)
                 .fontWeight(.bold)
                 .foregroundStyle(.primary)
+                .animation(.none, value: vm.mapLocation)
             // why maxWidth: .infinity??? and not minWidth???
                 .frame(maxWidth: .infinity)
                 .frame(height: 50)
