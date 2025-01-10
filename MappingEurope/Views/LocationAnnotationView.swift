@@ -24,7 +24,7 @@ struct LocationAnnotationView: View {
             Image(systemName: "triangle.fill")
                 .foregroundColor(.accentColor)
                 .rotationEffect(.degrees(180))
-                .offset(x: 0, y: -5)
+                .offset(x: 0, y: -8)
                 .padding(.bottom, 40)
         }
         

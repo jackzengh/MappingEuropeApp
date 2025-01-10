@@ -22,9 +22,11 @@ struct LocationsView: View {
                 Spacer()
                 locationsModal
             }
-            
-            
         }
+        .sheet(item: $vm.showLocationsSheet, onDismiss: nil) { location in
+            LocationDetailView(location: location)
+        }
+
     }
 }
 
@@ -45,7 +47,8 @@ extension LocationsView {
                 .foregroundStyle(.primary)
                 .animation(.none, value: vm.mapLocation)
             // why maxWidth: .infinity??? and not minWidth???
-                .frame(maxWidth: .infinity)
+//                .frame(maxWidth: .infinity)
+                .frame(maxWidth: vm.maxWidthIpad)
                 .frame(height: 50)
                 .overlay(alignment: .leading) {
                     Button(action: {
@@ -68,7 +71,8 @@ extension LocationsView {
             }
             
         }
-        .background(Color.white)
+        .background(.thickMaterial)
+        .foregroundColor(.primary)
         .shadow(color: Color.black.opacity(0.3), radius: 20, x: 0, y: 15)
         .cornerRadius(10)
         .padding()
@@ -84,7 +88,10 @@ extension LocationsView {
                     LocationAnnotationView()
                         .scaleEffect(vm.mapLocation == location ? 1 : 0.7)
                         .onTapGesture {
-                            vm.showNextLocation(location: location)
+                            // withAnimation call necessary to enable transitions and animations to take effect
+                            withAnimation (.easeInOut) {
+                                vm.showNextLocation(location: location)
+                            }
                         }
                 }
             }

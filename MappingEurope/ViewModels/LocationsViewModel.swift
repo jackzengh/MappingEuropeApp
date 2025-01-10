@@ -25,7 +25,11 @@ class LocationsViewModel: ObservableObject {
     
     @Published var showLocationsList: Bool = false
     
+    @Published var showLocationsSheet: Location? = nil
+    
     @Published var mapRegion: MKCoordinateRegion = MKCoordinateRegion()
+    
+    @Published var maxWidthIpad: CGFloat = 700
     
     // set mapSpan as a static constant -> it will not change throughout the app
     let mapSpan: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)

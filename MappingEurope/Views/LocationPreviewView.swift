@@ -33,6 +33,8 @@ struct LocationPreviewView: View {
                 .offset(y: 50)
                 .cornerRadius(25)
         )
+        .frame(maxWidth: vm.maxWidthIpad)
+        .frame(maxWidth: .infinity)
         .padding()
         
         
@@ -82,7 +84,7 @@ extension LocationPreviewView {
     
     var learnMoreButton: some View {
         Button {
-            
+            vm.showLocationsSheet = location
         } label: {
         Text("Learn more")
                 .font(.headline)
@@ -94,7 +96,9 @@ extension LocationPreviewView {
     
     var nextPlaceButton: some View {
         Button {
-            vm.nextPlaceButtonPressed()
+            withAnimation (.easeInOut) {
+                vm.nextPlaceButtonPressed()
+            }
         } label: {
         Text("Next place")
                 .font(.headline)
